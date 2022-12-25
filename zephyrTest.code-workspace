@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../.platformio/packages/framework-zephyr"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"tast.h": "c",
+			"zephyr.h": "c"
+		}
+	}
+}
