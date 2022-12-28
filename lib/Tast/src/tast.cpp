@@ -1,15 +1,25 @@
 #include "tast.h"
-//#include <zephyr/kernel.h>
-//#include <zephyr/drivers/gpio.h>
-//#include <zephyr/devicetree.h>
+#define BLINK 0
+#if BLINK==0
+#include <zephyr/kernel.h>
 
+#include <zephyr/sys/printk.h>
+#include <zephyr/drivers/i2s.h>
+#include <zephyr/drivers/gpio.h>
+
+#define SLEEP_TIME_MS   5000
 int tast()
 {
+	k_msleep(SLEEP_TIME_MS);
 	return 34;
 }
-#if 0
+#endif
+#if BLINK==1
+#include <zephyr/kernel.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/devicetree.h>
 /* 1000 msec = 1 sec */
-#define SLEEP_TIME_MS   1000
+#define SLEEP_TIME_MS   5000
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
@@ -40,5 +50,6 @@ int tast()
 		}
 		k_msleep(SLEEP_TIME_MS);
 	}
+	return 5;
 }
 #endif

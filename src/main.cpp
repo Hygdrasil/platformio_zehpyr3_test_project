@@ -1,14 +1,16 @@
-#include <zephyr.h>
-#include <sys/printk.h>
-#include <device.h>
-#include <drivers/pwm.h>
+#include <zephyr/kernel.h>
+#include <zephyr/sys/printk.h>
+#include <zephyr/device.h>
+#include <zephyr/drivers/pwm.h>
 
 #include "tast.h"
+#include "dast.h"
 
-void main(void)
+int main(void)
 {
 
 	printk("PWM-based blinky\n");
+
 
 
 	/*
@@ -20,8 +22,9 @@ void main(void)
 	 */
 
 	while (1) {
-		printk("Result from Testlib %d\n", tast());
+		printk("Result from Testlib %d\n", tast()+dast());
 
 		k_sleep(K_SECONDS(4U));
 	}
+	return 1;
 }
